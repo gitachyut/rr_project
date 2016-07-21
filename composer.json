@@ -1,0 +1,11 @@
+{
+    "name": "krishnadeka/rr_project",
+    "description": "Riverrun Digital's Web Development Skill Test",
+    "authors": [
+        {
+            "name": "gitachyut",
+            "email": "linkinakd72@gmail.com"
+        }
+    ],
+    "require": {}
+}

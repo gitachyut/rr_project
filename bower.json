@@ -1,0 +1,20 @@
+{
+  "name": "rr_project",
+  "homepage": "https://github.com/gitachyut/rr_project",
+  "authors": [
+    "gitachyut <linkinakd72@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
