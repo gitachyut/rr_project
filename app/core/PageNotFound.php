@@ -2,12 +2,13 @@
 /**
  * Page not found class
  */
-class PageNotFound
+class PageNotFound extends MainController
 {
 
   function __construct()
   {
-    echo "page not found";
+      parent::__construct();
+      $this->load->view('error/error_404',[]);
   }
 }
 

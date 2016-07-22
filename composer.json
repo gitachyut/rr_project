@@ -8,5 +8,7 @@
         }
     ],
 
-    "require": {}
+    "require": {
+        "illuminate/database": "4.2.*"
+    }
 }

@@ -4,10 +4,9 @@
  */
 class MainController
 {
-
-  public  function __construct()
-  {
-    echo "main cont i sruning";
+  public $load;
+  public function __construct(){
+    $this->load =  Loader::load();
   }
 
 }
