@@ -8,7 +8,7 @@ class PageNotFound extends MainController
   function __construct()
   {
       parent::__construct();
-      $this->load->view('error/error_404',[]);
+      $this->view('error/error_404',[]);
   }
 }
 

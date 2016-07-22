@@ -17,7 +17,10 @@ define('DBUser','root');
 define('DBPassword','12345');
 define('Database','rr_project');
 
-
-
+/*
+* Set Base URL
+*/
+define('BASE_URL','http://localhost');
+define('URL',$_SERVER["REQUEST_URI"]);
 
  ?>

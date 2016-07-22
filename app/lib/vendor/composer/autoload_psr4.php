@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
+    'Kilte\\Pagination\\' => array($vendorDir . '/amstaffix/pagination/source'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
 );
