@@ -1,9 +1,9 @@
 <?php
-  include_once __DIR__.'/../vendor/autoload.php';
+  include_once __DIR__.'/lib/vendor/autoload.php';
   include_once __DIR__.'/config/config.php';
   include_once __DIR__.'/config/autoload.php';
   include_once __DIR__.'/config/db.php';
-  
+
   if(@$_GET['uri']){
     $uri = $_GET['uri'];
     $parts = explode('/', $uri);
