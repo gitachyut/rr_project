@@ -28,7 +28,7 @@
         if(Csrf::check_token($_POST['csrf_token'])){
           echo "go";
         }else{
-          echo "stop";
+          echo "stop me d";
         }
       }
 
