@@ -2,11 +2,21 @@
 /**
  * All configuration info need to be set here
  */
+
+
+/**
+ * session settings
+ */
+ini_set("session.cookie_httponly", 1);
+session_name('rr_project');
 session_start();
 session_regenerate_id(true);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
+/**
+*  Debug mode on/off option
+*/
+
+define('DEBUG',true);
 
 /*
 * Set your database credentials here
@@ -20,7 +30,19 @@ define('Database','rr_project');
 /*
 * Set Base URL
 */
-define('BASE_URL','http://localhost');
-define('URL',$_SERVER["REQUEST_URI"]);
+define('BASE_URL','http://localhost/rr_project');
+
+/*
+* Set Default Controller
+* eg; $GLOBALS['ROUTE'] = "Welcome/hello";
+*/
+$GLOBALS['DEFAULT_ROUTE'] = "Welcome";
+
+
+
+
+
+
+
 
  ?>

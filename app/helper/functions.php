@@ -1,18 +1,17 @@
 <?php
-  function panination_url(){
-    $url = BASE_URL.URL;
-    if(substr($url , -1) != '/'){
-        $url = $url.'/page/';
-    }else{
-        $url = $url.'page/';
+  function debug(){
+    if(DEBUG){
+      ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
     }
-    $url = explode('page/', $url);
-    $url = $url[0] .'page/';
-    return  $url;
-  }
+  } // Debug function ends here ..
 
+  function base_url(){
+      $url = BASE_URL;
+      return $url;
+  }// base_url function ends here
 
-
-
-
+  
+  debug();
  ?>

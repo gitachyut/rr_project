@@ -37,5 +37,4 @@ spl_autoload_register("autoloadModel");
 spl_autoload_register("autoloadController");
 spl_autoload_register("autoloadLib");
 spl_autoload_register("autoloadCore");
-
 spl_autoload_register("none");
