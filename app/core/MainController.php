@@ -32,9 +32,18 @@ abstract class MainController
   public function view($path){
     include_once __DIR__.'/../views/'.$path.'.php';
   }
+  public function flash_set($name,$msg){
+    $_SESSION[$name]= $msg;
+  }
+  public  function flash_get($name){
+    if(isset($_SESSION[$name])){
+      $msg = $_SESSION[$name];
+      unset($_SESSION[$name]);
+      return $msg;
+    }
+  }
 
-  
-  public function get_header($path='',$data = []){
+  public function get_header($path=''){
     if(empty($path)){
       $path = 'header';
     }else{
@@ -44,7 +53,7 @@ abstract class MainController
   }
 
 
-  public function get_footer($path='',$data = []){
+  public function get_footer($path=''){
     if(empty($path)){
       $path = 'footer';
     }else{

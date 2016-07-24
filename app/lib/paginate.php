@@ -15,9 +15,14 @@ class Paginate
   public function show(){
     $pages = $this->pages->build();
     $output = '';
-    $output .= '<ul>';
+    $output .= '<ul class="pagination pagination-sm">';
     foreach ($pages as $key => $value) {
-      $output .='<a href="'.self::panination_url(). $key.self::$get_part.'"><li>'.$value.'</li></a>';
+      if($value=='current'){
+          $output .='<li class="disabled active" ><a href="'.self::panination_url(). $key.self::$get_part.'">'.$key.'</a></li>';
+      }else{
+          $output .='<li><a href="'.self::panination_url(). $key.self::$get_part.'">'.$key.'</a></li>';
+      }
+
     }
     $output .= '</ul>';
     return $output;

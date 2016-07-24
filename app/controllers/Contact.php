@@ -7,15 +7,16 @@
 
     public function index($arg)
     {
-      $about = $this->model('About');
-      $result = $about->test();
-    //  var_dump($result);
+      $contact = $this->model('Contact');
       $paginate = $this->library('paginate');
-      $paginate->init(200,@$arg['page'],10,7);
-      //$paginate->page_offset();
-      //$paginate->page_limit();
+      $paginate->init(
+                      $contact->user_count(),
+                      @$arg['page'],
+                      3,
+                      2
+                    );
+      $result = $contact->users($paginate->page_limit(),$paginate->page_offset());
       $paginate = $paginate->show();
-    //  var_dump($_GET);
 
       $this->data = [
           'meta_title'=>'conatct page index method',
@@ -28,26 +29,18 @@
 
     }
     public function form(){
-      if(isset($_POST)){
-        if(Csrf::check_token(isset($_POST['csrf_token']))){
-          echo "go";
+      if(isset($_REQUEST)){
+        if(Csrf::check_token(isset($_REQUEST['csrf_token']))){
+          $this->flash_set('fail','your form submission fail! try again..');
+          redirect('welcome');
         }else{
-          echo "stop";
+          $this->view('error/error_csrf');
         }
       }
 
     }
 
-    public function xyz(){
-      if(isset($_POST)){
-        if(Csrf::check_token($_POST['csrf_token'])){
-          echo "go";
-        }else{
-          echo "stop";
-        }
-      }
 
-    }
     public function test($arg){
       $about = $this->model('About');
       $result = $about->test();

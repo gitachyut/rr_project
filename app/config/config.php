@@ -7,10 +7,10 @@
 /**
  * session settings
  */
-ini_set("session.cookie_httponly", 1);
-session_name('rr_project');
+ini_set("session.cookie_httponly", 1); // to make the session secure
+session_name('rr_project'); // set the session name
 session_start();
-session_regenerate_id(true);
+session_regenerate_id(true); // to make the session secure
 
 /**
 *  Debug mode on/off option
@@ -19,7 +19,8 @@ session_regenerate_id(true);
 define('DEBUG',true);
 
 /*
-* Set your database credentials here
+* Set your Database credentials bellow
+*
 */
 define('Driver','mysql');
 define('Host','localhost');
@@ -31,6 +32,7 @@ define('Collation','utf8_unicode_ci');
 
 /*
 * Set Base URL
+* eg; http://localhost or http://localhost/project
 */
 define('BASE_URL','http://localhost/rr_project');
 
