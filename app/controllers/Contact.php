@@ -5,34 +5,50 @@
   class Contact extends MainController
   {
 
+
+    function __construct(){
+      parent::__construct();
+      $this->sessionset = $this->library('SessionSet');
+    }
+
     public function index($arg)
     {
-      $contact = $this->model('Contact');
-      $paginate = $this->library('paginate');
-      $paginate->init(
-                      $contact->user_count(),
+
+      $this->conatct = $this->model('Contact');
+      $this->paginate = $this->library('paginate');
+      $this->paginate->init(
+                      $this->conatct->user_count(),
                       @$arg['page'],
                       3,
                       2
                     );
-      $result = $contact->users($paginate->page_limit(),$paginate->page_offset());
-      $paginate = $paginate->show();
-
+      $this->result = $this->conatct->users(
+                        $this->paginate->page_limit(),
+                        $this->paginate->page_offset()
+                      );
+      //  $paginate = $this->paginate->show();
       $this->data = [
-          'meta_title'=>'conatct page index method',
-          'meta_desc'=>'ds sddadadadsa adsasdas ddsSda',
-          'pagination' =>   $paginate  ,
-          'result'  => $result
+                'meta_title'=>'conatct page index method',
+                'meta_desc'=>'ds sddadadadsa adsasdas ddsSda',
       ];
-
       $this->view('contact');
-
     }
+
+
+
     public function form(){
+
       if(isset($_REQUEST)){
         if(Csrf::check_token(isset($_REQUEST['csrf_token']))){
-          $this->flash_set('fail','your form submission fail! try again..');
-          redirect('welcome');
+          $this->formvalidation = $this->library('FormValidation');
+          $this->formvalidation->set_rule('name','User Name','/^[A-z0-9\s]{6,}$/');
+          $this->formvalidation->set_rule('email','Email','/^[A-z0-9]{3,}@[A-z0-9]{3,}\.[a-z]{2,}$/');
+          $this->formvalidation->set_rule('password','Password','/^.{8,}$/');
+          if($this->formvalidation->run()){
+            echo "sucess";
+          }else{
+            redirect('contact');
+          }
         }else{
           $this->view('error/error_csrf');
         }
@@ -41,21 +57,7 @@
     }
 
 
-    public function test($arg){
-      $about = $this->model('About');
-      $result = $about->test();
 
-      $paginate = $this->library('paginate');
-      $paginate->init(2000,@$arg['page'],10,7);
-      $paginate = $paginate->show();
-      //$offset = $paginate->offset();
-
-      $data = [
-          'pagination' =>   $paginate  ,
-          'result'  => $result
-      ];
-      $this->view('contact',  $data );
-    }
 
   }
 
