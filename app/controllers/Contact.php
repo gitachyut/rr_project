@@ -12,10 +12,10 @@
     //  var_dump($result);
       $paginate = $this->library('paginate');
       $paginate->init(200,@$arg['page'],10,7);
+      //$paginate->page_offset();
+      //$paginate->page_limit();
       $paginate = $paginate->show();
-      //$offset = $paginate->offset();
-    //  session_unset();
-    //  session_destroy();
+      var_dump($_GET);
 
       $this->data = [
           'meta_title'=>'conatct page index method',

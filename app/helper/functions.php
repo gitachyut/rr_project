@@ -3,7 +3,6 @@
 *Helper functions are written here.
 *
 */
-
   function base_url(){
       $url = BASE_URL;
       return $url;

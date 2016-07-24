@@ -2,7 +2,7 @@
 /**
  *
  */
-class MainModel extends DB
+class MainModel
 {
 
   function __construct()

@@ -6,6 +6,7 @@ use Kilte\Pagination\Pagination as Pagination ;
 class Paginate
 {
   public $pages;
+  public static $get_part ;
   public function init($x,$y,$a='',$b=''){
       $this->pages = new Pagination($x,$y,$a,$b);
       return   $this->pages;
@@ -16,7 +17,7 @@ class Paginate
     $output = '';
     $output .= '<ul>';
     foreach ($pages as $key => $value) {
-      $output .='<a href="'.self::panination_url(). $key.'"><li>'.$value.'</li></a>';
+      $output .='<a href="'.self::panination_url(). $key.self::$get_part.'"><li>'.$value.'</li></a>';
     }
     $output .= '</ul>';
     return $output;
@@ -33,6 +34,12 @@ class Paginate
 
   public static  function panination_url(){
       $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
+      $get_part =  explode('?', $url);
+      if(isset($get_part[1])){
+        self::$get_part = '?'.$get_part[1];
+      }else{
+        self::$get_part = '';
+      }
       if(substr($url , -1) != '/'){
           $url = $url.'/page/';
       }else{

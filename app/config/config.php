@@ -11,7 +11,6 @@ ini_set("session.cookie_httponly", 1);
 session_name('rr_project');
 session_start();
 session_regenerate_id(true);
-define('SECURE_SESSION',true);
 
 /**
 *  Debug mode on/off option
@@ -27,6 +26,8 @@ define('Host','localhost');
 define('DBUser','root');
 define('DBPassword','12345');
 define('Database','rr_project');
+define('Charset','utf8');
+define('Collation','utf8_unicode_ci');
 
 /*
 * Set Base URL

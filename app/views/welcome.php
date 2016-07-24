@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-
+  
     <h1>Welcome To Achyut's Custom MVC Framework</h1>
   </body>
 </html>
