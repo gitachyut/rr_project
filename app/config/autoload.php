@@ -30,7 +30,8 @@ function autoloadCore($className) {
 function none($className) {
     $filename = __DIR__."/../core/PageNotFound.php";
     require $filename;
-    new PageNotFound();
+    $error_404 = new PageNotFound();
+    $error_404->index('');
 }
 
 spl_autoload_register("autoloadModel");

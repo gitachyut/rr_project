@@ -11,6 +11,7 @@ ini_set("session.cookie_httponly", 1);
 session_name('rr_project');
 session_start();
 session_regenerate_id(true);
+define('SECURE_SESSION',true);
 
 /**
 *  Debug mode on/off option
@@ -39,10 +40,4 @@ define('BASE_URL','http://localhost/rr_project');
 $GLOBALS['DEFAULT_ROUTE'] = "Welcome";
 
 
-
-
-
-
-
-
- ?>
+?>

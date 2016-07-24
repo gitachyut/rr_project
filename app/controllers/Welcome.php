@@ -5,7 +5,7 @@
 class Welcome extends MainController
 {
 
-  public function index(){
+  public function index($arg){
     $this->view('welcome');
   }
 }

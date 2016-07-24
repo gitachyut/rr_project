@@ -9,23 +9,27 @@
     {
       $about = $this->model('About');
       $result = $about->test();
+    //  var_dump($result);
       $paginate = $this->library('paginate');
       $paginate->init(200,@$arg['page'],10,7);
       $paginate = $paginate->show();
       //$offset = $paginate->offset();
-      $_SESSION['name']= 'akdd9';
     //  session_unset();
     //  session_destroy();
-      $data = [
+
+      $this->data = [
+          'meta_title'=>'conatct page index method',
+          'meta_desc'=>'ds sddadadadsa adsasdas ddsSda',
           'pagination' =>   $paginate  ,
           'result'  => $result
       ];
-      $this->view('contact',  $data );
+
+      $this->view('contact');
 
     }
     public function form(){
       if(isset($_POST)){
-        if(Csrf::check_token($_POST['csrf_token'])){
+        if(Csrf::check_token(isset($_POST['csrf_token']))){
           echo "go";
         }else{
           echo "stop";

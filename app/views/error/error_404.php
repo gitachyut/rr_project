@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
-  </head>
-  <body>
-      <h1>Page Not Found</h1>
-  </body>
-</html>
+<?php
+/*
+* Header function
+*/
+$this->get_header();
+?>
+
+<div class="container">
+      <h1 class="error_404">Page Not Found!</h1>
+</div>
+
+<?php $this->get_footer(); ?>

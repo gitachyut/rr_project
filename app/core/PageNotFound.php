@@ -4,11 +4,9 @@
  */
 class PageNotFound extends MainController
 {
-
-  function __construct()
-  {
-      parent::__construct();
-      $this->view('error/error_404',[]);
+  public function index($arg){
+    $this->view('error/error_404',[]);
+    die();
   }
 }
 
