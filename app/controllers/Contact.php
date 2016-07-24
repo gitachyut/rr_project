@@ -15,7 +15,7 @@
       //$paginate->page_offset();
       //$paginate->page_limit();
       $paginate = $paginate->show();
-      var_dump($_GET);
+    //  var_dump($_GET);
 
       $this->data = [
           'meta_title'=>'conatct page index method',

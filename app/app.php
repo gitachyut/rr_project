@@ -6,9 +6,14 @@
   include_once __DIR__.'/helper/functions.php';
   class App{
    public function __construct(){
-      if(@$_GET['uri']){
-        $uri = $_GET['uri'];
-        $parts = explode('/', $uri);
+     $url = base_url().'/';
+     $sep = 'http://'.$_SERVER['HTTP_HOST'].'/';
+     $output = explode($sep,$url);
+     $output = explode($output[1],$_SERVER["REQUEST_URI"]);
+      if(!empty($output[1])){
+        $uri = $output[1];
+        $parts = explode('?', $uri);
+        $parts = explode('/', $parts[0]);
         self::routeset($parts);
       }else{
         $route = $GLOBALS['DEFAULT_ROUTE'];
@@ -22,6 +27,8 @@
       $control = $parts[0];
       if($control  != 'page' ){
         @$controller = new $control;
+
+
         if(@$parts[1] && $parts[1]!='page' ){
           if(in_array("page", $parts)){
             $page = count($parts)-1;
@@ -43,9 +50,13 @@
            }
          }
        }elseif (@$parts[1]=='page' ) {
+
           if(@$parts[2]){
              unset($parts[0]);
              $controller->page($parts[2],$control);
+           }else{
+             unset($parts[0]);
+             $controller->page('',$control);
            }
         }else{
              $controller->index('');

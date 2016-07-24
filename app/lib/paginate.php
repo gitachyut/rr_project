@@ -35,6 +35,7 @@ class Paginate
   public static  function panination_url(){
       $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
       $get_part =  explode('?', $url);
+      $url = $get_part[0];
       if(isset($get_part[1])){
         self::$get_part = '?'.$get_part[1];
       }else{
