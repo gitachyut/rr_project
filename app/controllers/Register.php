@@ -6,8 +6,13 @@ class Register extends MainController
 {
 
   public function index($arg){
-    $this->formvalidation = $this->library('FormValidation');
-    $this->view('register');
+    if(Auth::check()){
+        redirect('dashboard');
+    }else{
+      $this->formvalidation = $this->library('FormValidation');
+      $this->view('register');
+    }
+
 
   }
 
@@ -22,9 +27,17 @@ class Register extends MainController
 
         if($this->formvalidation->run()){
           $this->register = $this->model('register');
-          $this->register->register();
+          if($this->register->register())
+          {
+            $hash = hash('sha1',uniqid());
+            Auth::init(  $hash );
+            redirect('dashboard');
+          }else{
+            $this->formvalidation->flash->flash_set('error','<p class="alert alert-dismissible alert-danger">
+            Email-id alreday in used!</p>');
+            redirect('register');
+          }
 
-          //redirect('dashboard');
         }else{
           redirect('register');
         }

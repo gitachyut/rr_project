@@ -11,7 +11,8 @@ $this->get_header();
 <form class="" action="<?= base_url() ?>/register/addme/" method="post">
 <input type="hidden" name="csrf_token" value="<?= Csrf::csrf_token(); ?>">
     <fieldset>
-      <legend>Register</legend>
+      <legend>Register </legend>
+      <?=  $this->formvalidation->flash->flash_get('error') ?>
       <div class="row">
       <div class="col-lg-6">
       <div class="form-group">

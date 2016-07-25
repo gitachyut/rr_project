@@ -31,7 +31,8 @@
           </form>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?= base_url(); ?>/login">Login</a></li>
+            <li><a href="<?= base_url(); ?>/login/">Login</a></li>
+            <li><a href="<?= base_url(); ?>/logout/">Logout</a></li>
           </ul>
         </div>
       </div>
