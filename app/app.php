@@ -8,6 +8,7 @@
      $output = explode($sep,$url);
      $output = explode($output[1],$_SERVER["REQUEST_URI"]);
       if(!empty($output[1])){
+
         $uri = $output[1];
         $parts = explode('?', $uri);
         $parts = explode('/', $parts[0]);
@@ -19,13 +20,24 @@
       }
   }
 
+  private static function senitize($z){
+
+    $z = strtolower($z);
+    $z = preg_replace('/[^a-z0-9 -]+/', '', $z);
+    $z = str_replace(' ', '-', $z);
+    return trim($z, '-');
+
+  }
+
   public static function routeset($parts){
+    foreach ($parts as  $value) {
+      $r[] = self::senitize($value);
+    }
+    $parts  = $r;
     if($parts[0]){
       $control = $parts[0];
       if($control  != 'page' ){
         @$controller = new $control;
-
-
         if(@$parts[1] && $parts[1]!='page' ){
           if(in_array("page", $parts)){
             $page = count($parts)-1;
