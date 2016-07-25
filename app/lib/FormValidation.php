@@ -30,17 +30,30 @@ class FormValidation
         foreach ($_REQUEST as $key => $value) {
           if ( in_array($key, self::$_Rule[0])){
             $k = array_search($key,self::$_Rule[0]);
-             if (!preg_match(self::$_Rule[2][$k],$_REQUEST[$key])){
-               $msg = 'Input '.self::$_Rule[1][$k].' field again!';
-               $this->flash->form_error_set(self::$_Rule[0][$k],$msg);
-               $this->error ++ ;
-             }else{
-               $value = $_REQUEST[$key];
-               $this->flash->form_value_set(self::$_Rule[0][$k],$value);
-             }
+
+                if($key=='password'){
+                  $password = $_REQUEST[$key];
+                  if($_REQUEST['confirm_password'] != $password ){
+                       $this->error ++ ;
+                       $msg = '<p class="alert alert-dismissible alert-warning">
+                       Error: Password mismatch!</p>';
+                       $this->flash->form_error_set('confirm_password',$msg);
+                    }
+                 }
+                 if (!preg_match(self::$_Rule[2][$k],$_REQUEST[$key])){
+                   $msg = '<p class="alert alert-dismissible alert-warning">
+                   Error: Invalid '.self::$_Rule[1][$k].'!</p>';
+                   $this->flash->form_error_set(self::$_Rule[0][$k],$msg);
+                   $this->error ++ ;
+                 }else{
+                   $value = $_REQUEST[$key];
+                   $this->flash->form_value_set(self::$_Rule[0][$k],$value);
+                 }
+
           }
         }
          if($this->error == 0){
+           $this->flash->unset_form_value();
            return true;
          }else{
            return false;

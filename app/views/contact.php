@@ -18,7 +18,7 @@ $this->get_header();
           <input type="submit"  value="submit">
       </form>
 
-      <?=   $this->paginate->show(); ?>
+      <?=  $this->paginate->show(); ?>
 </div>
 <?php
   $this->get_footer();

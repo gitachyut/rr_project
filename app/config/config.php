@@ -41,7 +41,7 @@ define('BASE_URL','http://localhost/rr_project');
 * Set Default Controller, set home page
 * eg; $GLOBALS['ROUTE'] = "Welcome/hello";
 */
-$GLOBALS['DEFAULT_ROUTE'] = "Welcome";
+$GLOBALS['DEFAULT_ROUTE'] = "Register";
 
 
 ?>

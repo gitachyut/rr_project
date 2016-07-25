@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-abstract class MainController
+class MainController
 {
 
   public function __construct(){
@@ -14,7 +14,7 @@ abstract class MainController
       error_reporting(E_ALL | E_STRICT);
     }
   }
-  abstract public function index($arg);
+  //abstract public function index($arg);
 
   public function __call($method, $args) {
     $error_404 = new PageNotFound();

@@ -34,6 +34,8 @@
       $r[] = self::senitize($value);
     }
     $parts  = $r;
+
+
     if($parts[0]){
       $control = $parts[0];
       if($control  != 'page' ){

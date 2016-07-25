@@ -15,7 +15,6 @@ class SessionSet
       return $msg;
     }
   }
-
   public function form_error_set($name,$msg){
     $_SESSION['form'][$name]= $msg;
   }
@@ -35,6 +34,10 @@ class SessionSet
       unset($_SESSION['form_value'][$name]);
       return $msg;
     }
+  }
+
+  public  function unset_form_value(){
+      unset($_SESSION['form_value']);
   }
 
 }
