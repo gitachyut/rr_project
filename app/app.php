@@ -1,11 +1,8 @@
 <?php
-  include_once __DIR__.'/config/config.php';
-  include_once __DIR__.'/lib/vendor/autoload.php';
-  include_once __DIR__.'/config/autoload.php';
-  include_once __DIR__.'/config/db.php';
-  include_once __DIR__.'/helper/functions.php';
   class App{
    public function __construct(){
+     define('BASEPATH',TRUE);
+     self:: load_config_files();
      $url = base_url().'/';
      $sep = 'http://'.$_SERVER['HTTP_HOST'].'/';
      $output = explode($sep,$url);
@@ -77,6 +74,18 @@
 
     }
   }
+
+  private static  function load_config_files(){
+    include_once __DIR__.'/config/config.php';
+    include_once __DIR__.'/lib/vendor/autoload.php';
+    include_once __DIR__.'/config/autoload.php';
+    include_once __DIR__.'/config/db.php';
+    include_once __DIR__.'/helper/functions.php';
+  }
+
+
+
+
 }
 
 

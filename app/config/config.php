@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * All configuration info need to be set here
  */
@@ -37,7 +38,7 @@ define('Collation','utf8_unicode_ci');
 define('BASE_URL','http://localhost/rr_project');
 
 /*
-* Set Default Controller
+* Set Default Controller, set home page
 * eg; $GLOBALS['ROUTE'] = "Welcome/hello";
 */
 $GLOBALS['DEFAULT_ROUTE'] = "Welcome";
