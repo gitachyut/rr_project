@@ -5,7 +5,9 @@ h1.error_404 {
   margin-top:20%;
   color: #918185;
 }
-
+.pagination-centered{
+  text-align:center;
+}
 .footer h5{
   text-align:center;
   color: white;

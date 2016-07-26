@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }// base_url function ends here
   function redirect($arg){
       $url = BASE_URL.'/'.$arg;
+      header("HTTP/1.1 301 Moved Permanently");
       header('Location:'.$url);
   }
 

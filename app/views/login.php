@@ -13,36 +13,34 @@ $this->get_header();
     <fieldset>
       <legend>Login</legend>
       <?=  $this->formvalidation->flash->flash_get('error') ?>
-
       <div class="row">
       <div class="col-lg-6">
       <div class="form-group">
-        <label for="email" class="col-lg-2 control-label">Email</label>
-        <div class="col-lg-10">
-          <input class="form-control" type="email" name="email"
-          value="<?= $this->formvalidation->flash->form_value('email') ?>">
-        </div>
-      </div>
-     </div>
-        <div class="col-lg-6">
-          <?= $this->formvalidation->flash->form_error('email') ?>
+          <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-10">
+            <input type="email" class="form-control" id="inputEmail"   name="email"
+            value="<?= $this->formvalidation->flash->form_value('email') ?>"
+            placeholder="Email">
           </div>
-      </div>
-
-      <div class="row" style="margin-bottom:20px;">
-      <div class="col-lg-6">
-      <div class="form-group">
-        <label for="password" class="col-lg-2 control-label">Password</label>
-        <div class="col-lg-10">
-            <input class="form-control" type="password" name="password"
-            value="">
-
         </div>
-      </div>
-      </div>
-        <div class="col-lg-6">
+        <div class="form-group">
+          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputPassword"
+             name="password"
+            value="" placeholder="Password">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="remember" value="true"> Remember me
+              </label>
+            </div>
           </div>
+        </div>
+
+
       </div>
+    </div>
+
       <div class="row">
       <div class="col-lg-6">
       <div class="form-group">

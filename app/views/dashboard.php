@@ -6,8 +6,11 @@ $this->get_header();
 
 ?>
 <div class="container">
-      <h1>Welcome To Dashboard</h1>
-
+  <div class="jumbotron">
+    <h1><?= $this->dashboard['username'] ?></h1>
+    <p><?= $this->dashboard['email'] ?></p>
+    <p>Age:- <?= $this->dashboard['age'] ?></p>
+  </div>
 </div>
 <?php
   $this->get_footer();

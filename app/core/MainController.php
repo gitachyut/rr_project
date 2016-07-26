@@ -13,6 +13,7 @@ class MainController
       ini_set('display_startup_errors', 1);
       error_reporting(E_ALL | E_STRICT);
     }
+
   }
   //abstract public function index($arg);
 
@@ -30,7 +31,7 @@ class MainController
     return new $lib;
   }
 
-  public function view($path){
+  public function view($path,$data=[]){
     include_once __DIR__.'/../views/'.$path.'.php';
   }
 

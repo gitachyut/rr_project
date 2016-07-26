@@ -27,10 +27,10 @@ class Register extends MainController
 
         if($this->formvalidation->run()){
           $this->register = $this->model('register');
-          if($this->register->register())
+          if($id = $this->register->register())
           {
-            $hash = hash('sha1',uniqid());
-            Auth::init(  $hash );
+            $hash = Auth::init();
+            $this->register->register_session_token($id,$hash);
             redirect('dashboard');
           }else{
             $this->formvalidation->flash->flash_set('error','<p class="alert alert-dismissible alert-danger">

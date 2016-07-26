@@ -9,6 +9,8 @@ class MainModel
   function __construct()
   {
 
+    return $this;
+
   }
 }
 

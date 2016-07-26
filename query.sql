@@ -1,7 +1,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-----
 
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -15,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `users` (
    PRIMARY KEY(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
------
+
 
 
 CREATE TABLE IF NOT EXISTS `relationship` (
@@ -35,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `relationship` (
 ALTER TABLE `relationship`
 ADD UNIQUE KEY `unique_users_id` (`user_one_id`,`user_two_id`);
 
----------------
+
 
 
 CREATE TABLE IF NOT EXISTS `fav_friend` (
@@ -48,4 +47,15 @@ CREATE TABLE IF NOT EXISTS `fav_friend` (
     FOREIGN KEY (`fav_user_id`) REFERENCES users(`user_id`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-----------------
+
+
+CREATE TABLE IF NOT EXISTS `users_meta` (
+    `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user_id`  INT(10) UNSIGNED NOT NULL,
+    `session_token` varchar(256) NOT NULL,
+    `remember_token` TINYINT(2) NOT NULL DEFAULT '0',
+    `created_at` timestamp,
+    `updated_at` timestamp,
+    FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

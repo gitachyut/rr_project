@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ini_set("session.cookie_httponly", 1); // to make the session secure
 session_name('rr_project'); // set the session name
 session_start();
+//session_set_cookie_params ( time() + 10 , '/' ,'' ,'',true);
 session_regenerate_id(true); // to make the session secure
 
 /**
@@ -41,7 +42,7 @@ define('BASE_URL','http://localhost/rr_project');
 * Set Default Controller, set home page
 * eg; $GLOBALS['ROUTE'] = "Welcome/hello";
 */
-$GLOBALS['DEFAULT_ROUTE'] = "Register";
+$GLOBALS['DEFAULT_ROUTE'] = "dashboard";
 
 
 ?>
