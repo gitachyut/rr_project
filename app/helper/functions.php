@@ -16,4 +16,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       header('Location:'.$url);
   }
 
+  function _e($str){
+   return  htmlspecialchars($str);
+  }
+  function f_name($str){
+   $str =  explode(' ',$str);
+   return $str[0];
+  }
+
  ?>

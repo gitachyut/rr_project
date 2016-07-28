@@ -42,7 +42,7 @@ define('BASE_URL','http://localhost/rr_project');
 * Set Default Controller, set home page
 * eg; $GLOBALS['ROUTE'] = "Welcome/hello";
 */
-$GLOBALS['DEFAULT_ROUTE'] = "dashboard";
+$GLOBALS['DEFAULT_ROUTE'] = "Monkey/add";
 
 
 ?>

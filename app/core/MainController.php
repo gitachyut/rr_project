@@ -39,8 +39,6 @@ class MainController
   public function get_header($path=''){
     if(empty($path)){
       $path = 'header';
-    }else{
-      $path = 'header_'.$path;
     }
     include_once __DIR__.'/../views/'.$path.'.php';
   }
@@ -49,8 +47,6 @@ class MainController
   public function get_footer($path=''){
     if(empty($path)){
       $path = 'footer';
-    }else{
-      $path = 'footer_'.$path;
     }
     include_once __DIR__.'/../views/'.$path.'.php';
   }
