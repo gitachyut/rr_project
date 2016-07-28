@@ -36,7 +36,6 @@ $(document).ready(function(){
               var $output = `<table class="table table-striped table-hover ">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Age</th>
@@ -45,8 +44,7 @@ $(document).ready(function(){
                 </thead>
                 <tbody>`;
               $.each(data.output, function (index, monkey) {
-                  $output += ` <tr id="`+monkey.id+`"> 
-                                <td>`+(index+1)+`</td>
+                  $output += ` <tr id="`+monkey.id+`">
                                 <td>`+monkey.username+`</td>
                                 <td>`+monkey.email+`</td>
                                 <td>`+monkey.age+`</td>
