@@ -20,3 +20,6 @@ page - can't use 'page' as controller or method.
 -> Database can be access using DB::static_query_building_method_chaining<br>
 -> Csrf::csrf_token() is used to generate csrf token.<br>
 <hr>
+
+# You Will find the Table creation Sql inside query.sql file  
+<a href="https://github.com/gitachyut/rr_project/blob/master/query.sql">query.sql</a>
