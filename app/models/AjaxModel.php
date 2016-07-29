@@ -6,7 +6,10 @@ class AjaxModel extends MainModel
 {
 
   public function find_all_friend(){
-    $results = DB::select('select * from monkeys where id != :id', ['id' => $_POST['id']]);
+    $results = DB::select('SELECT * FROM `monkeys` WHERE id != :id and ( id NOT IN ( SELECT
+       `user_two_id` from `relationship`  where `user_one_id`= :idd )
+       AND id NOT IN ( SELECT `user_one_id` from `relationship` where
+      `user_two_id`= :idr ))', ['id' => $_POST['id'] , 'idd' => $_POST['id'] , 'idr' => $_POST['id']   ]);
     return   $results;
   }
   public function add_friend(){
@@ -26,6 +29,13 @@ class AjaxModel extends MainModel
     }else{
       return false;
     }
+  }
+  public function friends(){
+    $results = DB::select('SELECT * FROM `monkeys` WHERE id != :id and ( id IN ( SELECT
+       `user_two_id` from `relationship`  where `user_one_id`= :idd )
+       OR id IN ( SELECT `user_one_id` from `relationship` where
+      `user_two_id`= :idr ))', ['id' => $_POST['id'] , 'idd' => $_POST['id'] , 'idr' => $_POST['id']   ]);
+    return   $results;
   }
 
 
