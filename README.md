@@ -21,5 +21,4 @@ page - can't use 'page' as controller or method.
 -> Csrf::csrf_token() is used to generate csrf token.<br>
 <hr>
 
-# You Will find the Table creation Sql inside query.sql file  
-<a href="https://github.com/gitachyut/rr_project/blob/master/query.sql">query.sql</a>
+### You Will find the Table creation Sql inside  <a href="https://github.com/gitachyut/rr_project/blob/master/query.sql">query.sql </a>file  
