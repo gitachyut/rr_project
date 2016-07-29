@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `monkeys` (
   `created_at` timestamp,
   `updated_at` timestamp,
    INDEX(username(20)),
-   PRIMARY KEY(`user_id`)
+   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
