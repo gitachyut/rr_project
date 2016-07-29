@@ -2,7 +2,7 @@
 /**
  *
  */
-class User extends MainController
+class user extends MainController
 {
 
   function profile($arg)
