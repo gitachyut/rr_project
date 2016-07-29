@@ -2,7 +2,7 @@
 /**
  *
  */
-class Login extends MainController
+class login extends MainController
 {
   public function index(){
 
