@@ -2,7 +2,7 @@
 /**
  *  Add monkey
  */
-class Monkey extends MainController
+class monkey extends MainController
 {
 
     public function __construct(){

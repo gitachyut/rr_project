@@ -24,7 +24,7 @@ $this->get_header('monkey/header');
         </h3>
       </div>
       <div class="panel-body">
-        <h5><?= _e($monkey['email']) ?></h5>
+        <h5><a href="mailto:<?= _e($monkey['email']) ?>"><?= _e($monkey['email']) ?></a></h5>
         <b><i>Age:</i></b> <?= $monkey['age'] ?><br>
         <b><i>Friends:</i></b> <?= $monkey['friendcount'] ?><br>
         <?php if(!is_null($monkey['favfriend']) ){ ?>

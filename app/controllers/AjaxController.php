@@ -2,7 +2,7 @@
 /**
  *
  */
-class AjaxController extends MainController
+class ajaxcontroller extends MainController
 {
 
     public function __construct(){

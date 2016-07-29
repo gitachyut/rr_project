@@ -2,7 +2,7 @@
 /**
  *
  */
-class Dashboard extends MainController
+class dashboard extends MainController
 {
   protected $_id ;
   public function __construct(){

@@ -2,7 +2,7 @@
 /**
  * Welcome controller
  */
-class Welcome extends MainController
+class welcome extends MainController
 {
 
   public function index($arg){

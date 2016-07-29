@@ -2,7 +2,7 @@
 /**
  * Users controller
  */
-class Users  extends MainController
+class users  extends MainController
 {
 
 

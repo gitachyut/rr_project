@@ -2,7 +2,7 @@
 /**
  *
  */
-class Register extends MainController
+class register extends MainController
 {
 
   public function index($arg){
