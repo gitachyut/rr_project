@@ -48,12 +48,24 @@ class MonkeyModel extends MainModel
                 ->where('id', '=' , $id )
                 ->count();
     if($count == 1){
+      DB::table('fav_friend')
+              ->where('monkey_id', $id)
+              ->orWhere('fav_monkey_id', $id)
+              ->delete();
+      DB::table('relationship')
+                ->where('user_one_id', $id)
+                ->orWhere('user_two_id', $id)
+                ->delete();
       DB::table('monkeys')->where('id', '=', $id)->delete();
       return true;
     }else{
       return false;
     }
+
+
   }
+
+
   public function monkey_info($id){
     $count  = DB::table('monkeys')
                 ->where('id', '=' , $id )
@@ -89,7 +101,7 @@ class MonkeyModel extends MainModel
 
 
   public function search_monkey($offset,$limit){
-    $search = $_GET['search'];
+    @$search = $_GET['search'];
     $monkeys = DB::select('
       select m.id,m.username,m.email,m.age,f.fav_monkey_id as favfriend_id,
       (select mk.username from monkeys as mk where mk.id = f.fav_monkey_id ) as favfriend,
@@ -107,7 +119,7 @@ class MonkeyModel extends MainModel
   }
 
   public function count_search_monkey(){
-    $search = $_GET['search'];
+    @$search = $_GET['search'];
     $monkeys = DB::table('monkeys')
                       ->where('username', 'like', "%$search%")
                       ->orWhere('email', 'like', "%$search%")

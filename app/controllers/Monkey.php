@@ -29,7 +29,7 @@ class Monkey extends MainController
             $this->formvalidation->set_rule('username','User Name','/^[A-z0-9\s]{3,}$/');
             $this->formvalidation->set_rule('email','Email','/^[A-z0-9]{2,}@[A-z0-9]{2,}\.[a-z]{2,}$/');
             $this->formvalidation->set_rule('age','Age','/^[0-9]{1,3}$/');
-            $this->formvalidation->set_rule('bio','Bio','/^.*$/');
+            $this->formvalidation->set_rule('bio','Bio','/^(.)*$/');
             if($this->formvalidation->run()){
               if($id = $this->monkey->register())
               {
@@ -57,7 +57,7 @@ class Monkey extends MainController
             $this->formvalidation->set_rule('username','User Name','/^[A-z0-9\s]{3,}$/');
             $this->formvalidation->set_rule('email','Email','/^[A-z0-9]{2,}@[A-z0-9]{2,}\.[a-z]{2,}$/');
             $this->formvalidation->set_rule('age','Age','/^[0-9]{1,3}$/');
-            $this->formvalidation->set_rule('bio','Bio','/^.*$/');
+            $this->formvalidation->set_rule('bio','Bio','/^(.)*$/');
             if($this->formvalidation->run()){
               if( $this->monkey->update())
               {

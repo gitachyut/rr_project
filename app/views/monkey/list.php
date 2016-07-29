@@ -15,9 +15,12 @@ $this->get_header('monkey/header');
     <div class="panel panel-primary ">
       <div class="panel-heading">
         <h3 class="panel-title">
-        <a href="<?= base_url() ?>/monkey/profile/<?= $monkey['id'] ?>">
-          <?= _e($monkey['username']) ?>
-        </a>
+          <a href="<?= base_url() ?>/monkey/profile/<?= $monkey['id'] ?>">
+            <?= _e($monkey['username']) ?>
+          </a>
+          <a class="pull-right" href="<?= base_url() ?>/monkey/profile/<?= $monkey['id'] ?>">
+              <i>View Profile</i>
+          </a>
         </h3>
       </div>
       <div class="panel-body">

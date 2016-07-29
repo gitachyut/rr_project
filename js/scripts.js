@@ -12,7 +12,6 @@ $(document).ready(function(){
     if($("#favfriend").hasClass( "active" )){
       favFriend();
     }
-
   });
 
   var favFriend = function(){
@@ -142,7 +141,7 @@ $(document).ready(function(){
 
 
   $("#rmac").click(function(e) {
-    var conf = confirm("Are You Sure?");
+    var conf = confirmation();
     if (conf  == true) {
       var $id = $("#user_id").val();
       var $url = $("#base_url").val();
@@ -153,6 +152,13 @@ $(document).ready(function(){
   });
 
  });
+
+
+function confirmation(){
+    var conf = confirm("Are You Sure?");
+    return conf
+}
+
 
  var addfrnd = function (fid){
    var $auid = $("#user_id").val();
@@ -174,36 +180,44 @@ $(document).ready(function(){
   var frndrm = function( fid ){
     var $auid = $("#user_id").val();
     var $url = $("#base_url").val();
-    $.post(
-      $url+"/AjaxController/delfriend/",
-      {
-       'auid' :$auid,
-        'fid':fid
-      },
-      function( data ) {
-        console.log(data);
-        if(data.output == true){
-          $('#friend'+fid).hide();
-        }
-     });
-
+    var conf = confirmation();
+    if (conf  == true) {
+      $.post(
+        $url+"/AjaxController/delfriend/",
+        {
+         'auid' :$auid,
+          'fid':fid
+        },
+        function( data ) {
+          console.log(data);
+          if(data.output == true){
+            $('#friend'+fid).hide();
+          }
+       });
+     }else {
+       return false;
+     }
   };
   var favfrndrm = function( fid ){
     var $auid = $("#user_id").val();
     var $url = $("#base_url").val();
-    $.post(
-      $url+"/AjaxController/delfavfriend/",
-      {
-       'auid' :$auid,
-        'fid':fid
-      },
-      function( data ) {
-        console.log(data);
-        if(data.output == true){
-          $('.favfrndtab').hide();
-        }
-     });
-
+    var conf = confirmation();
+    if (conf  == true) {
+      $.post(
+        $url+"/AjaxController/delfavfriend/",
+        {
+         'auid' :$auid,
+          'fid':fid
+        },
+        function( data ) {
+          console.log(data);
+          if(data.output == true){
+            $('.favfrndtab').hide();
+          }
+       });
+     }else {
+       return false;
+     }
   };
 
   var addfrndfav = function(fid){
