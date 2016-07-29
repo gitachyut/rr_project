@@ -13,7 +13,7 @@ class ajaxcontroller extends MainController
     }
 
     public function addfriendslist(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->find_all_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -24,7 +24,7 @@ class ajaxcontroller extends MainController
     }
 
     public function friendslist(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->friends();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -35,7 +35,7 @@ class ajaxcontroller extends MainController
     }
 
     public function addfriend(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->add_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -46,7 +46,7 @@ class ajaxcontroller extends MainController
     }
 
     public function delfriend(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->del_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -57,7 +57,7 @@ class ajaxcontroller extends MainController
     }
 
     public function favfriend(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->fav_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -68,7 +68,7 @@ class ajaxcontroller extends MainController
     }
 
     public function favfriendslist(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->list_fav_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);
@@ -79,7 +79,7 @@ class ajaxcontroller extends MainController
     }
 
     public function delfavfriend(){
-      if(isset($_POST)){
+      if(isset($_POST['csrf_token'])){
         $results['output'] = $this->monkey->del_fav_friend();
         header( "Content-Type: application/json" );
         echo  json_encode($results);

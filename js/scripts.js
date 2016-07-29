@@ -168,11 +168,13 @@ function confirmation(){
  var addfrnd = function (fid){
    var $auid = $("#user_id").val();
    var $url = $("#base_url").val();
+       var $csrf = $("#csrf_token").val();
    $.post(
      $url+"/AjaxController/addfriend/",
      {
       'auid' :$auid,
-       'fid':fid
+       'fid':fid,
+                 'csrf_token':$csrf
      },
      function( data ) {
        console.log(data);
@@ -188,13 +190,15 @@ function confirmation(){
   var frndrm = function( fid ){
     var $auid = $("#user_id").val();
     var $url = $("#base_url").val();
+        var $csrf = $("#csrf_token").val();
     var conf = confirmation();
     if (conf  == true) {
       $.post(
         $url+"/AjaxController/delfriend/",
         {
          'auid' :$auid,
-          'fid':fid
+          'fid':fid,
+                    'csrf_token':$csrf
         },
         function( data ) {
           console.log(data);
@@ -209,13 +213,15 @@ function confirmation(){
   var favfrndrm = function( fid ){
     var $auid = $("#user_id").val();
     var $url = $("#base_url").val();
+        var $csrf = $("#csrf_token").val();
     var conf = confirmation();
     if (conf  == true) {
       $.post(
         $url+"/AjaxController/delfavfriend/",
         {
          'auid' :$auid,
-          'fid':fid
+          'fid':fid,
+                    'csrf_token':$csrf
         },
         function( data ) {
           console.log(data);
@@ -231,12 +237,14 @@ function confirmation(){
 
   var addfrndfav = function(fid){
     var $auid = $("#user_id").val();
+        var $csrf = $("#csrf_token").val();
     var $url = $("#base_url").val();
     $.post(
       $url+"/AjaxController/favfriend/",
       {
        'auid' :$auid,
-        'fid':fid
+        'fid':fid,
+                  'csrf_token':$csrf
       },
       function( data ) {
         console.log(data);
