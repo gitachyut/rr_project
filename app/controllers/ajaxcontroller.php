@@ -13,52 +13,80 @@ class ajaxcontroller extends MainController
     }
 
     public function addfriendslist(){
-      $results['output'] = $this->monkey->find_all_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->find_all_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function friendslist(){
-      $results['output'] = $this->monkey->friends();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->friends();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function addfriend(){
-      $results['output'] = $this->monkey->add_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->add_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function delfriend(){
-      $results['output'] = $this->monkey->del_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->del_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function favfriend(){
-      $results['output'] = $this->monkey->fav_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->fav_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function favfriendslist(){
-      $results['output'] = $this->monkey->list_fav_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->list_fav_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 
     public function delfavfriend(){
-      $results['output'] = $this->monkey->del_fav_friend();
-      header( "Content-Type: application/json" );
-      echo  json_encode($results);
-      die();
+      if(isset($_POST)){
+        $results['output'] = $this->monkey->del_fav_friend();
+        header( "Content-Type: application/json" );
+        echo  json_encode($results);
+        die();
+      }else{
+        $this->view('error/error_csrf');
+      }
     }
 }
 

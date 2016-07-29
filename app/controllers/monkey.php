@@ -18,9 +18,12 @@ class monkey extends MainController
     }
 
     public function edit($arg){
-        $this->profile = $this->monkey->monkey_info($arg[2]);
-        $this->view('monkey/edit_monkey');
-
+        if(isset($arg[2])){
+          $this->profile = $this->monkey->monkey_info($arg[2]);
+          $this->view('monkey/edit_monkey');
+        }else {
+            redirect('monkey/all/');
+        }
     }
 
     public function AddMonkey(){
@@ -79,11 +82,15 @@ class monkey extends MainController
     }
 
     public function profile($arg){
-          if($this->profile = $this->monkey->monkey_info($arg[2])){
-              $this->view('monkey/profile');
-          }else{
-              redirect('monkey/all/');
-          }
+      if(isset($arg[2])){
+        if($this->profile = $this->monkey->monkey_info($arg[2])){
+            $this->view('monkey/profile');
+        }else{
+            redirect('monkey/all/');
+        }
+      }else{
+          redirect('monkey/all/');
+      }
     }
 
     public function all($arg){

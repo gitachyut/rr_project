@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   $('#Tabs a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
@@ -17,10 +16,12 @@ $(document).ready(function(){
   var favFriend = function(){
     var $id = $("#user_id").val();
     var $url = $("#base_url").val();
+    var $csrf = $("#csrf_token").val();
     $.post(
       $url+"/AjaxController/favfriendslist/",
       {
-        'id':$id
+        'id':$id,
+        'csrf_token':$csrf
       },
       function( data ) {
 
@@ -50,7 +51,7 @@ $(document).ready(function(){
           $output +=`</tbody>
         </table>`;
       }else{
-        $output =`Nobody Found!`;
+        $output =`Empty List!`;
       }
       $("#favfriend").html($output);
     });
@@ -59,10 +60,12 @@ $(document).ready(function(){
   var Friends = function(){
     var $id = $("#user_id").val();
     var $url = $("#base_url").val();
+    var $csrf = $("#csrf_token").val();
       $.post(
         $url+"/AjaxController/friendslist/",
         {
-          'id':$id
+          'id':$id,
+          'csrf_token':$csrf
         },
         function( data ) {
 
@@ -83,7 +86,7 @@ $(document).ready(function(){
                                 <td>`+monkey.email+`</td>
                                 <td>`+monkey.age+`</td>
                                 <td>
-                                <a href="#" class="btn btn-primary frndrm" onclick="frndrm(this.id);" id="`+monkey.id+`">Remove</a>
+                                <a href="#" class="btn btn-primary frndrm" onclick="frndrm(this.id);" id="`+monkey.id+`">Unfriend</a>
                                 <a href="#" class="btn btn-primary frndfav" onclick="addfrndfav(this.id);" id="`+monkey.id+`">Add To Favourite</a>
                                 </td>
                               </tr>`;
@@ -91,7 +94,7 @@ $(document).ready(function(){
               $output +=`</tbody>
             </table>`;
           }else{
-            $output =`Nobody Found!`;
+            $output =`Empty List!`;
           }
           $("#friends").html($output);
       });
@@ -102,10 +105,12 @@ $(document).ready(function(){
   var addFriends = function(){
     var $id = $("#user_id").val();
     var $url = $("#base_url").val();
+    var $csrf = $("#csrf_token").val();
       $.post(
         $url+"/AjaxController/addfriendslist/",
         {
-          'id':$id
+          'id':$id,
+          'csrf_token':$csrf
         },
         function( data ) {
 
@@ -131,7 +136,7 @@ $(document).ready(function(){
               $output +=`</tbody>
             </table>`;
           }else{
-            $output =`Nobody Found!`;
+            $output =`Empty List!`;
           }
           $("#addfriends").html($output);
       });
@@ -173,6 +178,9 @@ function confirmation(){
        console.log(data);
        if(data.output){
          $('#fr'+fid).hide();
+         $(".modal-dialog").html('<span class="label label-success">Successfully Added!</span>')
+         $('.bs-example-modal-sm').modal('show');
+         setTimeout(function(){  $('.bs-example-modal-sm').modal('hide'); }, 2000);
        }
     });
  };
@@ -213,6 +221,7 @@ function confirmation(){
           console.log(data);
           if(data.output == true){
             $('.favfrndtab').hide();
+            $("#favfriend").html('Empty List!');
           }
        });
      }else {
@@ -231,8 +240,14 @@ function confirmation(){
       },
       function( data ) {
         console.log(data);
-        if(data.output == true){
-          $('.frndfav').hide();
+        if(data.output){
+          $(".modal-dialog").html('<span class="label label-success">Successfully Added To Favourite Friend List!</span>')
+          $('.bs-example-modal-sm').modal('show');
+          setTimeout(function(){  $('.bs-example-modal-sm').modal('hide'); }, 2000);
+        }else{
+          $(".modal-dialog").html('<span class="label label-danger">Allready Exist SomeOne!</span>')
+          $('.bs-example-modal-sm').modal('show');
+          setTimeout(function(){  $('.bs-example-modal-sm').modal('hide'); }, 2000);
         }
      });
   };
