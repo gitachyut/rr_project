@@ -22,7 +22,14 @@ $this->get_header('monkey/header');
       </div>
       <div class="panel-body">
         <h5><?= _e($monkey['email']) ?></h5>
-        Age: <?= _e($monkey['age']) ?><br>
+        <b><i>Age:</i></b> <?= $monkey['age'] ?><br>
+        <b><i>Friends:</i></b> <?= $monkey['friendcount'] ?><br>
+        <?php if(!is_null($monkey['favfriend']) ){ ?>
+          <b><i>Favourite Friend:</i></b>
+          <a href="<?= base_url() ?>/monkey/profile/<?= $monkey['favfriend_id'] ?>">
+            <?= _e($monkey['favfriend']) ?>
+          </a>
+          <br><?php } ?>
       </div>
     </div>
   </div>

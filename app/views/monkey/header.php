@@ -34,7 +34,7 @@
           <ul class="nav navbar-nav navbar-right">
 
 
-            <li><a href="<?= base_url(); ?>/monkey/all/">List All Monkeys</a></li>
+            <li><a href="<?= base_url(); ?>/monkey/all/">View All Monkeys</a></li>
 
 
 

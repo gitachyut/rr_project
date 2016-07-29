@@ -1,6 +1,6 @@
 <?php
 /**
- *   Model 
+ *   Model
  */
 class MonkeyModel extends MainModel
 {
@@ -65,11 +65,22 @@ class MonkeyModel extends MainModel
       return false;
     }
   }
-  public function list_monkey($offset,$limit){
-    $monkeys = DB::table('monkeys')->skip($offset)->take($limit)
-                  ->get();
-    return $monkeys;
 
+
+  public function list_monkey($offset,$limit){
+    $monkeys = DB::select('
+      select m.id,m.username,m.email,m.age,f.fav_monkey_id as favfriend_id,
+      (select mk.username from monkeys as mk where mk.id = f.fav_monkey_id ) as favfriend,
+      (select count(rel.rel_id) from relationship as rel where (m.id = rel.user_one_id OR m.id = rel.user_two_id)) as friendcount
+      FROM monkeys as m
+      left join fav_friend as f
+      on f.`monkey_id` = m.id
+      left join relationship as r
+      on ( m.id = r.user_one_id OR m.id = r.user_two_id )
+      GROUP BY m.email LIMIT :offset, :limit',
+      [ 'limit' => $limit ,'offset' =>$offset  ]
+    );
+    return $monkeys;
   }
   public function count_all_monkey(){
     return DB::table('monkeys')->count();
@@ -79,13 +90,19 @@ class MonkeyModel extends MainModel
 
   public function search_monkey($offset,$limit){
     $search = $_GET['search'];
-    $monkeys = DB::table('monkeys')
-                      ->where('username', 'like', "%$search%")
-                      ->orWhere('email', 'like', "%$search%")
-                      ->skip($offset)->take($limit)
-                      ->get();
-
-
+    $monkeys = DB::select('
+      select m.id,m.username,m.email,m.age,f.fav_monkey_id as favfriend_id,
+      (select mk.username from monkeys as mk where mk.id = f.fav_monkey_id ) as favfriend,
+      (select count(rel.rel_id) from relationship as rel where (m.id = rel.user_one_id OR m.id = rel.user_two_id)) as friendcount
+      FROM monkeys as m
+      left join fav_friend as f
+      on f.`monkey_id` = m.id
+      left join relationship as r
+      on ( m.id = r.user_one_id OR m.id = r.user_two_id )
+      where (  m.username like "%'.$search.'%"  OR m.email like "%'.$search.'%"  )
+      GROUP BY m.email LIMIT :offset, :limit',
+      [ 'limit' => $limit ,'offset' =>$offset  ]
+    );
     return $monkeys;
   }
 
@@ -95,10 +112,10 @@ class MonkeyModel extends MainModel
                       ->where('username', 'like', "%$search%")
                       ->orWhere('email', 'like', "%$search%")
                       ->count();
-
-
     return $monkeys;
   }
+
+
 
 }
 
