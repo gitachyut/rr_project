@@ -1,8 +1,4 @@
-# Riverrun Digital Project
-
-Riverrun Digital's Web Development Skill Test </br>
-
-## A custom MVC framework build for this project. </br>
+# A custom MVC framework. </br>
 
 Used libraries (like Formvalidation,CSRF,Pagination etc. ) are custom.<br>
 
@@ -21,4 +17,3 @@ page - can't use 'page' as controller or method.
 -> Csrf::csrf_token() is used to generate csrf token.<br>
 <hr>
 
-### You Will find the Table creation Sql inside  <a href="https://github.com/gitachyut/rr_project/blob/master/query.sql">query.sql </a>file  
